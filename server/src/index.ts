@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction} from "express";
 import { urlencoded } from 'body-parser';
+import cookieSession from 'cookie-session';
 
 import routes from './routes/login'
 
@@ -7,6 +8,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(urlencoded({extended: true}));
+app.use(cookieSession({keys: ['shinjigetintherobot']}))
 app.use('/', routes);
 
 //error handler middleware
