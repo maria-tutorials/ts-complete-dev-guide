@@ -4,15 +4,13 @@ import cookieSession from 'cookie-session';
 
 import { AppRouter } from './AppRouter';
 import './controllers/login';
-import routes from './routes/login';
-
+import './controllers/root';
 
 const app = express();
 const PORT = 3001;
 
 app.use(urlencoded({extended: true}));
 app.use(cookieSession({keys: ['shinjigetintherobot']}))
-app.use('/', routes);
 app.use(AppRouter.getInstance());
 
 //error handler middleware
