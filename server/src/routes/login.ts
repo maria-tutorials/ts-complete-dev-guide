@@ -56,7 +56,10 @@ router.post('/login', (req: RequestWithBody, res: Response) => {
     }
 });
 
-
+router.get('/logout', (req: Request, res: Response) => {
+    req.session = null;
+    res.redirect('/');
+});
 
 //export { router };
 export default router;
