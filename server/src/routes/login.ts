@@ -32,18 +32,6 @@ router.get('/', (req: Request, res: Response) => {
     }
 });
 
-router.post('/login', (req: RequestWithBody, res: Response) => {
-    const { email, password } = req.body;
-
-    // there's no signup
-    if (email && password && email === 'e@mail.com' && password === 'pass') {
-        req.session = { loggedIn: true };
-        res.redirect('/');
-    } else {
-        res.status(401).send('Invalid email or password');
-    }
-});
-
 router.get('/logout', (req: Request, res: Response) => {
     req.session = null;
     res.redirect('/');
