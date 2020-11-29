@@ -8,7 +8,7 @@ import routes from './routes/login';
 
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(urlencoded({extended: true}));
 app.use(cookieSession({keys: ['shinjigetintherobot']}))

@@ -1,11 +1,16 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
-import { get, controller } from './decorators';
+import { get, controller, use } from './decorators';
+
+function logger(req: Request, res: Response, next: NextFunction) {
+    console.log(`${req.method}`);
+}
 
 @controller('/')
 class LoginController {
 
     @get('login')
+    @use(logger)
     getLogin (req: Request, res: Response): void {
         res.send(`<!DOCTYPE html>
             <html>
