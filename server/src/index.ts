@@ -2,7 +2,10 @@ import express, { Request, Response, NextFunction} from "express";
 import { urlencoded } from 'body-parser';
 import cookieSession from 'cookie-session';
 
-import routes from './routes/login'
+import { AppRouter } from './AppRouter';
+import './controllers/login';
+import routes from './routes/login';
+
 
 const app = express();
 const PORT = 3000;
@@ -10,6 +13,7 @@ const PORT = 3000;
 app.use(urlencoded({extended: true}));
 app.use(cookieSession({keys: ['shinjigetintherobot']}))
 app.use('/', routes);
+app.use(AppRouter.getInstance());
 
 //error handler middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

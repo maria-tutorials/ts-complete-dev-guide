@@ -32,26 +32,6 @@ router.get('/', (req: Request, res: Response) => {
     }
 });
 
-router.get('/login', (req: Request, res: Response) => {
-    res.send(`<!DOCTYPE html>
-	<html>
-	  <body>
-        <form method="POST">
-            <div>
-                <label>Email</label>
-                <input type="email" name="email">
-            </div>
-            <div>
-                <label>Password</label>
-                <input type="password" name="password">
-            </div>
-	      <button>Submit</button>
-	    </form>
-	  </body>
-	</html>
-    `);
-});
-
 router.post('/login', (req: RequestWithBody, res: Response) => {
     const { email, password } = req.body;
 
@@ -73,5 +53,4 @@ router.get('/protected', requireAuth, (req: Request, res: Response) => {
     res.send('Welcome to the protected route, you are logged in');
 });
 
-//export { router };
 export default router;
