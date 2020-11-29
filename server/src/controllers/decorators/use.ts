@@ -11,6 +11,5 @@ export function use(middleware: RequestHandler) {
         ) || [];
         //middlewares.push(middleware);
         Reflect.defineMetadata(MetadataKeys.middleware, [...middlewares, middleware], target, key);
-    }
-    
+    }    
 }
