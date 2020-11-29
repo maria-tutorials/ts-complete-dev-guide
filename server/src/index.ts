@@ -1,15 +1,13 @@
 import express, { Request, Response, NextFunction} from "express";
+import { urlencoded } from 'body-parser';
+
+import routes from './routes/login'
 
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req: Request, res: Response) => {
-    res.send(`
-        <div>
-            <h1> Bom dia alegria </h1>
-        </div>
-    `);
-})
+app.use(urlencoded({extended: true}));
+app.use('/', routes);
 
 //error handler middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
